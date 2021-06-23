@@ -14,6 +14,15 @@ public class Users {
     private String Username;
     private String password;
 
+    public Users() {
+    }
+
+    public Users(Integer id, String username, String password) {
+        this.id = id;
+        Username = username;
+        this.password = password;
+    }
+
     public Integer getId() {
         return id;
     }

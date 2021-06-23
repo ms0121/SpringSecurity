@@ -40,6 +40,13 @@ public class SecurityConfigUser extends WebSecurityConfigurerAdapter {
     }
 
     // 自定义登录页面
+
+    /**
+     * Authority()：用户判断当前的用户是否有被授权，不需要角色:  "ROLE_"(代表角色) 开头
+     * hasRole(): 表示角色，里面的参数值必须以： "ROLE_"(代表角色) 开头
+     * @param http
+     * @throws Exception
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 

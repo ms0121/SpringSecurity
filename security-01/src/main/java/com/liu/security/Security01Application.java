@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 //@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 
 @SpringBootApplication
-@EnableGlobalMethodSecurity(securedEnabled = true)
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 public class Security01Application {
 
     public static void main(String[] args) {
