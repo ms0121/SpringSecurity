@@ -44,7 +44,7 @@ public class MyUserDetailsService implements UserDetailsService {
 
         // 用户角色列表
         List<GrantedAuthority> role =
-                AuthorityUtils.commaSeparatedStringToAuthorityList("admin, ROLE_role1");
+                AuthorityUtils.commaSeparatedStringToAuthorityList("admin, ROLE_role");
         /**
          * 参数1：用户名
          * 参数2：密码加密
