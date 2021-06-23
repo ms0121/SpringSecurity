@@ -8,8 +8,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 import javax.annotation.Resource;
+import javax.sql.DataSource;
 
 /**
  * @author lms
@@ -27,6 +30,18 @@ public class SecurityConfigUser extends WebSecurityConfigurerAdapter {
     // 将service中自定义的UserDetailsService实现类进行注入
     @Resource
     private UserDetailsService userDetailsService;
+
+    // 将数据源注入到容器中
+    @Resource
+    private DataSource dataSource;
+
+    // 配置对象
+    @Bean
+    public PersistentTokenRepository persistentTokenRepository(){
+        JdbcTokenRepositoryImpl repository = new JdbcTokenRepositoryImpl();
+        repository.setDataSource(dataSource);
+        return repository;
+    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -75,6 +90,11 @@ public class SecurityConfigUser extends WebSecurityConfigurerAdapter {
 
                 // 方式4:hasAnyRole("role")，有其中的任意一个角色即可
                 .antMatchers("/test/index").hasAnyRole("role")
+
+                .anyRequest().authenticated()
+                .and().rememberMe().tokenRepository(persistentTokenRepository())
+                .tokenValiditySeconds(60)
+                .userDetailsService(userDetailsService)  // 设置有效时间
                 .and().csrf().disable();  // 关闭csrf防护
 
 
