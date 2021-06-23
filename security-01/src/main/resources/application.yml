@@ -1,0 +1,19 @@
+server:
+  port: 8111
+
+#springsecurity的账户和密码的设置
+#  方式1： 使用配置文件的方式实现用户名和密码的设置
+#spring:
+#  security:
+#    user:
+#      name: lms
+#      password: 123
+
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #url中database为对应的数据库名称
+    url: jdbc:mysql://localhost:3306/security
+    username: root
+    password:
