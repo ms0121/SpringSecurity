@@ -5,8 +5,10 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PostFilter;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -17,18 +19,19 @@ import java.util.List;
  * @date 2021-06-20 - 21:55
  */
 
-@RestController
+@Controller
 @RequestMapping("test")
 public class SecurityController {
 
     @GetMapping("hello")
+    @ResponseBody
     public String test(){
         return "hello, security!";
     }
 
     @GetMapping("index")
     public String index(){
-        return "welcome to security!";
+        return "success";
     }
 
     /**
@@ -45,6 +48,7 @@ public class SecurityController {
      *
      */
     @GetMapping("update")
+    @ResponseBody
 //    @Secured({"ROLE_role", "ROLE_admin"})
 //    @PreAuthorize("hasAuthority('admin')")
     @PostAuthorize("hasAuthority('admin1')")
@@ -55,14 +59,20 @@ public class SecurityController {
 
 
     @GetMapping("getAll")
+    @ResponseBody
     @PreAuthorize("hasAuthority('admin')")
     // 表示对方法执行之后进行验证，是否符合指定的条件，
-    @PostFilter("filterObject.username == 'aa'")
+    // @PostFilter("filterObject.username == 'aa'")
+    // 方法执行之前进行判断，
+    @PostFilter("filterObject.id%2==0")
     public List<Users> getAll(){
         ArrayList<Users> list = new ArrayList<>();
         list.add(new Users(11,"aa", "8989"));
         list.add(new Users(12,"bb", "8080"));
         return list;
     }
+
+
+
 
 }
