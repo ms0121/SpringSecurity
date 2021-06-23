@@ -65,6 +65,9 @@ public class SecurityConfigUser extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
+        // 配置退出的操作
+        http.logout().logoutUrl("/logout").logoutSuccessUrl("/test/hello").permitAll();
+
         // 配置没有访问权限跳转到指定的自定义页面
         http.exceptionHandling().accessDeniedPage("/unauth.html");
 
@@ -72,7 +75,8 @@ public class SecurityConfigUser extends WebSecurityConfigurerAdapter {
                 .loginPage("/login.html")  // 登录页面
                 // login.html页面提交数据的访问地址
                 .loginProcessingUrl("/user/login") // 登录页面提交表单的请求地址(也就是把表单数据提交到哪里)
-                .defaultSuccessUrl("/test/index").permitAll() // 登陆成功之后，跳转到该路径，并具有所有的权限
+//                .defaultSuccessUrl("/test/index").permitAll() // 登陆成功之后，跳转到该路径，并具有所有的权限
+                .defaultSuccessUrl("/success.html").permitAll()  // 登录成功之后访问当前设定的页面
                 .and().authorizeRequests()  // 授权请求设置
 
                 // 方式1： hasAuthority()方法

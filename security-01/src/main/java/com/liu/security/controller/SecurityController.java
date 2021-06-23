@@ -30,6 +30,7 @@ public class SecurityController {
     }
 
     @GetMapping("index")
+    @ResponseBody
     public String index(){
         return "success";
     }
