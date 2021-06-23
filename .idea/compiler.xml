@@ -6,18 +6,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="acl_parent" />
+        <module name="common" />
         <module name="security-01" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="acl_parent" target="1.8" />
+      <module name="common" target="1.8" />
       <module name="security-01" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="acl_parent" options="-parameters" />
+      <module name="common" options="-parameters" />
       <module name="security-01" options="-parameters" />
     </option>
   </component>
