@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/SpringSecurity.iml" filepath="$PROJECT_DIR$/.idea/SpringSecurity.iml" />
-      <module fileurl="file://$PROJECT_DIR$/acl_parent/acl_parent.iml" filepath="$PROJECT_DIR$/acl_parent/acl_parent.iml" />
-      <module fileurl="file://$PROJECT_DIR$/acl_parent/common/common.iml" filepath="$PROJECT_DIR$/acl_parent/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/security-01/security-01.iml" filepath="$PROJECT_DIR$/security-01/security-01.iml" />
-      <module fileurl="file://$PROJECT_DIR$/acl_parent/common/service_base/service_base.iml" filepath="$PROJECT_DIR$/acl_parent/common/service_base/service_base.iml" />
-      <module fileurl="file://$PROJECT_DIR$/acl_parent/common/spring_security/spring_security.iml" filepath="$PROJECT_DIR$/acl_parent/common/spring_security/spring_security.iml" />
     </modules>
   </component>
 </project>

@@ -7,7 +7,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="security-01" />
-        <module name="spring_security" />
         <module name="service_base" />
       </profile>
     </annotationProcessing>
