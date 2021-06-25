@@ -1,2 +1,9 @@
 server:
   port: 8001
+
+
+spring:
+  security:
+    user:
+      name: lms
+      password: lms
